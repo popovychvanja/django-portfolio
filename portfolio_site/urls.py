@@ -9,7 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('contact/', contact_view, name='contact'),
-     path('services/<int:pk>/', service_detail, name='service_detail'),
+    path('services/<int:pk>/', service_detail, name='service_detail'),
     path('portfolio/<int:pk>/', portfolio_detail, name='portfolio_detail'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
   + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

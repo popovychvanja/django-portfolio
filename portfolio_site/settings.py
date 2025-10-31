@@ -44,7 +44,17 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'portfolio',
     'whitenoise.runserver_nostatic',
+    'cloudinary',
+    'cloudinary_storage',
 ]
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'defldb2vn',     # ← Your cloud name
+    'API_KEY': '676493872978178',  # ← Your API key
+    'API_SECRET': 'UAyZNVAdgMPCdhH-Vz2Qgcmhzko',  # ← Your API secret
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
@@ -156,8 +166,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
 
 # In development, serve media
 if DEBUG:
