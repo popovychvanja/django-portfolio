@@ -1,5 +1,5 @@
 {% extends 'portfolio/base.html' %}
-{% load crispy_forms_tags %}   <!-- ADD THIS LINE -->
+{% load crispy_forms_tags %}
 {% load static %}
 
 {% block title %}Contact Me{% endblock %}
@@ -23,6 +23,11 @@
         <form method="post" novalidate>
           {% csrf_token %}
           {{ form|crispy }}
+          
+          <!-- ADD THIS BUTTON -->
+          <div class="d-grid mt-4">
+            <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+          </div>
         </form>
       </div>
     </div>
