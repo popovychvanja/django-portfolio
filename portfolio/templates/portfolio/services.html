@@ -5,14 +5,19 @@
     <div class="row g-4">
       {% for service in services %}
       <div class="col-md-6 col-lg-4">
-        <div class="service-card h-100">
-          <i class="{{ service.icon }}"></i>
-          <h5>{{ service.title }}</h5>
-          <p>{{ service.description }}</p>
-        </div>
+        <a href="{% url 'service_detail' service.pk %}" class="text-decoration-none">
+          <div class="service-card h-100">
+            <i class="{{ service.icon }}"></i>
+            <h5>{{ service.title }}</h5>
+            <p>{{ service.description|truncatewords:10 }}</p>
+            <i class="fas fa-arrow-right float-end"></i>
+          </div>
+        </a>
       </div>
       {% empty %}
-      <p class="text-center">No services added yet.</p>
+      <div class="col-12">
+        <a href="/admin/portfolio/service/add/" class="btn btn-primary">Add Your First Service</a>
+      </div>
       {% endfor %}
     </div>
   </div>

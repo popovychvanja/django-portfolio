@@ -43,3 +43,13 @@ def contact_view(request):
         form = ContactForm()
 
     return render(request, 'portfolio/contact.html', {'form': form})
+
+from django.shortcuts import get_object_or_404
+
+def service_detail(request, pk):
+    service = get_object_or_404(Service, pk=pk)
+    return render(request, 'portfolio/service_detail.html', {'service': service})
+
+def portfolio_detail(request, pk):
+    item = get_object_or_404(PortfolioItem, pk=pk)
+    return render(request, 'portfolio/portfolio_detail.html', {'item': item})

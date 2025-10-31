@@ -5,21 +5,23 @@
     <div class="row g-4">
       {% for item in portfolio_items %}
       <div class="col-md-6 col-lg-4">
-        <div class="portfolio-item">
-          {% if item.image %}
-          <img src="{{ item.image.url }}" alt="{{ item.title }}">
-          {% endif %}
-          <div class="portfolio-overlay">
-            <h5>{{ item.title }}</h5>
-            <p>{{ item.description }}</p>
-            {% if item.url %}
-            <a href="{{ item.url }}" target="_blank" class="btn btn-sm btn-light mt-2">View Project</a>
+        <a href="{% url 'portfolio_detail' item.pk %}" class="text-decoration-none">
+          <div class="portfolio-item">
+            {% if item.image %}
+            <img src="{{ item.image.url }}" alt="{{ item.title }}">
             {% endif %}
+            <div class="portfolio-overlay">
+              <h5>{{ item.title }}</h5>
+              <p>{{ item.description|truncatewords:5 }}</p>
+              <i class="fas fa-arrow-right"></i>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
       {% empty %}
-      <p class="text-center">No projects yet.</p>
+      <div class="col-12">
+        <a href="/admin/portfolio/portfolioitem/add/" class="btn btn-primary">Add Your First Project</a>
+      </div>
       {% endfor %}
     </div>
   </div>
