@@ -1,0 +1,31 @@
+{% extends 'portfolio/base.html' %}
+{% load crispy_forms_tags %}   <!-- ADD THIS LINE -->
+{% load static %}
+
+{% block title %}Contact Me{% endblock %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container">
+    <h2 class="mb-4 text-center">Get In Touch</h2>
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <form method="post" novalidate>
+          {% csrf_token %}
+          {{ form|crispy }}
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

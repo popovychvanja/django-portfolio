@@ -1,0 +1,22 @@
+<section id="services" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">What I Can Do</h2>
+    <div class="row g-4">
+      {% for service in services %}
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm service-item">
+          <div class="card-body text-center">
+            <i class="{{ service.icon }} fa-3x text-primary mb-3"></i>
+            <h5 class="card-title">{{ service.title }}</h5>
+            <p class="card-text">{{ service.description }}</p>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-12 text-center">
+        <p>No services added yet. <a href="/admin/">Add in Admin</a></p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
