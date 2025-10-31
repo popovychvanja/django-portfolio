@@ -1,21 +1,18 @@
-<section id="services" class="py-5">
+<!-- portfolio/templates/portfolio/services.html -->
+<section class="py-5" id="services">
   <div class="container">
-    <h2 class="text-center mb-4">What I Can Do</h2>
+    <h2 class="section-title">What I Can Do</h2>
     <div class="row g-4">
       {% for service in services %}
-      <div class="col-md-4">
-        <div class="card h-100 shadow-sm service-item">
-          <div class="card-body text-center">
-            <i class="{{ service.icon }} fa-3x text-primary mb-3"></i>
-            <h5 class="card-title">{{ service.title }}</h5>
-            <p class="card-text">{{ service.description }}</p>
-          </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="service-card h-100">
+          <i class="{{ service.icon }}"></i>
+          <h5>{{ service.title }}</h5>
+          <p>{{ service.description }}</p>
         </div>
       </div>
       {% empty %}
-      <div class="col-12 text-center">
-        <p>No services added yet. <a href="/admin/">Add in Admin</a></p>
-      </div>
+      <p class="text-center">No services added yet.</p>
       {% endfor %}
     </div>
   </div>

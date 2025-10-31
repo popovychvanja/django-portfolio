@@ -1,26 +1,25 @@
-<section id="portfolio" class="py-5 bg-light">
+<!-- portfolio/templates/portfolio/portfolio.html -->
+<section class="py-5 bg-white" id="portfolio">
   <div class="container">
-    <h2 class="text-center mb-4">My Work</h2>
-    <div class="row g-4 justify-content-center">
+    <h2 class="section-title">My Work</h2>
+    <div class="row g-4">
       {% for item in portfolio_items %}
-      <div class="col-md-4">
-        <div class="card h-100 shadow-sm portfolio-item">
+      <div class="col-md-6 col-lg-4">
+        <div class="portfolio-item">
           {% if item.image %}
-          <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.title }}" style="height:200px; object-fit:cover;">
+          <img src="{{ item.image.url }}" alt="{{ item.title }}">
           {% endif %}
-          <div class="card-body text-center">
-            <h5 class="card-title">{{ item.title }}</h5>
-            <p class="card-text">{{ item.description }}</p>
-            {% if item.link %}
-            <a href="{{ item.link }}" target="_blank" class="btn btn-outline-primary btn-sm">View Project</a>
+          <div class="portfolio-overlay">
+            <h5>{{ item.title }}</h5>
+            <p>{{ item.description }}</p>
+            {% if item.url %}
+            <a href="{{ item.url }}" target="_blank" class="btn btn-sm btn-light mt-2">View Project</a>
             {% endif %}
           </div>
         </div>
       </div>
       {% empty %}
-      <div class="col-12 text-center">
-        <p>No portfolio items yet. <a href="/admin/">Add in Admin</a></p>
-      </div>
+      <p class="text-center">No projects yet.</p>
       {% endfor %}
     </div>
   </div>
