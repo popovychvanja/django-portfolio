@@ -1,11 +1,11 @@
-from django.conf import settings
 from django.shortcuts import render, redirect
-from .models import Service, PortfolioItem, ContactMessage
 from django.contrib import messages
 from django.core.mail import send_mail
+from django.conf import settings  # ← ADD THIS LINE
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from .forms import ContactForm
+from .models import Service, PortfolioItem, ContactMessage
 
 def home(request):
     services = Service.objects.all()
@@ -23,7 +23,7 @@ def contact_view(request):
             contact.sent = True
             contact.save()
 
-            # ----- Send email -----
+            # Send email
             subject = f"New contact from {contact.name}"
             html_message = render_to_string('portfolio/email_contact.html', {'contact': contact})
             plain_message = strip_tags(html_message)
@@ -31,7 +31,7 @@ def contact_view(request):
             send_mail(
                 subject,
                 plain_message,
-                contact.email,
+                settings.DEFAULT_FROM_EMAIL,  # ← NOW WORKS
                 [settings.DEFAULT_FROM_EMAIL],
                 html_message=html_message,
                 fail_silently=False,
